@@ -1,0 +1,45 @@
+{
+    "layer": "top",
+    "margin-top": 5,
+    "modules-left": ["clock"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio","network","battery"],
+
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "pulseaudio": {
+	"format": "{volume}% {icon}",
+	"format-muted": "󰖁",
+	"format-icons": {
+		"headphone": "",
+		"default": ["", ""]
+	},
+	"scroll-step": 1,
+	"on-click": "pavucontrol"
+    },
+    "network": {
+	"interface": "wlan0",
+	"format": "{ifname}",
+	"format-wifi": "{essid} ",
+	"format-ethernet": "{ifname} ",
+	"format-disconnected": "", //An empty format will hide the module.
+
+	"tooltip-format": "{ifname}",
+	"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+	"tooltip-format-ethernet": "{ifname} ",
+	"tooltip-format-disconnected": "Disconnected",
+	"max-length": 50
+    },
+    "hyprland/workspaces": {
+	"format": "{name}",
+	"persistent-workspaces": {
+		"*": [ 2,3,4,5 ]
+	}
+    }
+}

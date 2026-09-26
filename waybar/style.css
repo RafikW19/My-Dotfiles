@@ -20,14 +20,16 @@ tooltip label {
   color: white;
 }
 
-
+#workspaces{
+    border-radius: 25px;
+    background-color: alpha(black, 0.6);
+}
 #workspaces button {
     transition: all 333ms ease-in-out;
     padding: 0 5px;
     margin: 2px;
     background: alpha(black, 0.6);
     color: white;
-    border: 1px solid #434343;
     border-radius: 50px;
 }
 #workspaces button.active {
@@ -45,10 +47,10 @@ tooltip label {
     color: white;
     border-radius: 25px;
     font-weight: 700;
-    margin: 0 7px;
+    margin: 0 3px;
 }
 
-#battery,
+#memory,
 #pulseaudio,
 #network {
     background-color:alpha(black, 0.6);
@@ -56,4 +58,10 @@ tooltip label {
     padding: 0 5px;
     margin: 0 5px;
     border-radius: 10px;
+}
+
+#custom-logo {
+    margin: 0 10px;
+    font-size: x-large;
+    color: skyblue;
 }

@@ -8,3 +8,6 @@ V2:
 some new changes on waybar
 rofi
 still no thems yet :)
+
+V2.01:
+type shit changes

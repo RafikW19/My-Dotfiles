@@ -15,4 +15,4 @@
 
 /* Import color-scheme from `colors` directory */
 
-@import "~/.config/rofi/type-3/colors/onedark.rasi"
+ @import "~/.config/themes/tokyo-night/rofi/colors.rasi"

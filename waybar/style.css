@@ -1,3 +1,5 @@
+@import "color.css";
+
 * {
     border: none;
     font-family: "SF Pro Display","JetBrainsMono Nerd Font Propo";
@@ -34,7 +36,7 @@ tooltip label {
 }
 #workspaces button.active {
     min-width: 40px;
-    background: rgb(12, 94, 78);
+    background: rgb(72, 94, 172);
     color: black;
     border-radius: 100px;
     border: 1px solid #434343;
@@ -44,21 +46,36 @@ tooltip label {
 #clock {
     min-width: 60px;
     background-color: alpha(black, 0.6);
-    color: white;
+    color: rgb(127, 127, 233);
     border-radius: 25px;
     font-weight: 700;
     margin: 0 3px;
 }
 
-#memory,
-#pulseaudio,
-#network {
+#memory{
     background-color:alpha(black, 0.6);
-    color: white;
+    color: rgb(127, 127, 233);
     padding: 0 5px;
     margin: 0 5px;
     border-radius: 10px;
 }
+
+#pulseaudio{
+    background-color:alpha(black, 0.6);
+    color: rgb(241, 251, 64);
+    padding: 0 5px;
+    margin: 0 5px;
+    border-radius: 10px;
+}
+
+#network {
+    background-color:alpha(black, 0.6);
+    color: rgb(131, 62, 187);
+    padding: 0 5px;
+    margin: 0 5px;
+    border-radius: 10px;
+}
+
 
 #custom-logo {
     margin: 0 10px;

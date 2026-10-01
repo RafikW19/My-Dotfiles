@@ -25,7 +25,8 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       750px;
+    width:                       600px;
+    height:			 400px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -90,7 +91,7 @@ entry {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     6;
+    columns:                   	 4;
     lines:                       3;
     cycle:                       true;
     dynamic:                     true;

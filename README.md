@@ -22,7 +22,7 @@ here is the major changes:
 ![Desktop](screenshots/desktop.png)
 
 
-![Wallpaper Menu](screenshot/wallpaper-menu.png)
+![Wallpaper Menu](screenshots/wallpaper-menu.png)
 
 
 ![Rofi Launcher](screenshots/rofi.png)

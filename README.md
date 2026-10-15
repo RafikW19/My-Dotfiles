@@ -19,19 +19,22 @@ here is the major changes:
 
 ##Desktop Preview
 
-![Desktop] (screenshots/desktop.png)
+![Desktop](screenshots/desktop.png)
 
 
-![Rofi Launcher] (screenshots/rofi.png)
+![Wallpaper Menu](screenshot/wallpaper-menu.png)
 
 
-![Random shot] (screenshots/random.png)
+![Rofi Launcher](screenshots/rofi.png)
 
 
-![Lock Screen] (screenshots/lock-screen.jpg)
+![Random shot](screenshots/random.png)
 
 
-![Terminal] (screenshots/terminal.png)
+![Lock Screen](screenshots/lock-screen.jpg)
+
+
+![Terminal](screenshots/terminal.png)
 
 --What's Included
 

@@ -1,54 +1,216 @@
 {
-    "layer": "top",
-    "margin-top": 5,
-    "modules-left": ["custom/logo","clock"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["pulseaudio","network","memory"],
-
-
-    "memory": {
-	"interval": 3,
-	"format": "󰍛 {}%"
-	},
-
-    "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
-    },
-
-    "pulseaudio": {
-	"format": "{icon}  {volume}%",
-	"format-muted": "󰖁",
-	"format-icons": {
-		"headphone": "",
-		"default": ["", ""]
-	},
-	"scroll-step": 1,
-	"on-click": "pavucontrol"
-    },
-
-    "network": {
-	"interface": "wlan0",
-	"format": "{ifname}",
-	"format-wifi": "  {essid}",
-	"format-ethernet": "{ifname} ",
-	"format-disconnected": "", //An empty format will hide the module.
-	"tooltip-format": "{ifname}",
-	"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-	"tooltip-format-ethernet": "{ifname} ",
-	"tooltip-format-disconnected": "Disconnected",
-	"max-length": 50
-    },
-
-    "hyprland/workspaces": {
-	"format": "{name}",
-	"persistent-workspaces": {
-		"*": [ 2,3,4,5 ]
-	}
-    },
-
-	"custom/logo": {
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "modules-left": [
+    "group/left1",
+    "group/left2"
+  ],
+  "group/left1": {
+    "orientation": "inherit",
+    "modules": [
+      "clock"
+    ]
+  },
+  "group/left2": {
+    "orientation": "inherit",
+    "modules": [
+      
+    ]
+  },
+  "modules-center": [
+    "custom/omarchy",
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "group/right1",
+    "group/right2",
+    "group/right3"
+  ],
+  "group/right3": {
+    "orientation": "inherit",
+    "modules": [
+      "network",
+      "backlight",
+      "pulseaudio",
+      "battery"
+    ]
+  },
+  "group/right2": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/clipboard"
+    ]
+  },
+  "group/right1": {
+    "orientation": "inherit",
+    "modules": [
+      
+    ]
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "cursor": true,
+    "format": "{icon}",
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+  "custom/omarchy": {
 	"format": "󰣇",
-	"tooltip-format": "Click for neofetch",
-	"on-click": "kitty fish -c 'neofetch; exec fish'"
-	}
+	"tooltip-format": "Click for fastfetch",
+	"on-click": "kitty fish -c 'fastfetch; exec fish'"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛",
+    "on-click": "omarchy-launch-or-focus-tui btop",
+    "on-click-right": "alacritty"
+  },
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "format-alt": "{:%A %d/%m/%Y}",
+    "tooltip-format": "<span>{calendar}</span>",
+    "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+  },
+
+
+  "network": {
+    "format": "{icon} {essid}",
+    "format-wifi": "{icon} {essid}",
+    "format-ethernet": "󰀂 Ethernet",
+    "format-disconnected": "󰤮 Disconnected",
+    "format-icons": {
+      "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+      "ethernet": ["󰀂"],
+      "default": ["󰤨"]
+    },
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⬇ {bandwidthDownBytes}  ⬆ {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "{ifname}\n⬇ {bandwidthDownBytes}  ⬆ {bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 2,
+    "spacing": 1,
+    "on-click": "nm-connection-editor"
+  },
+
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-discharging": "{capacity}% {icon}",
+    "format-charging": "{capacity}% {icon}",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "on-click": "omarchy-menu power",
+    "on-click-right": "notify-send -u low \"$(omarchy-battery-status)\"",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "bluetooth": {
+    "format": "",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "",
+    "format-no-controller": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "omarchy-launch-bluetooth"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "on-click": "omarchy-launch-audio",
+    "on-click-right": "pamixer -t",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "headset": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
+    },
+    "modules": [
+      "custom/expand-icon"
+    ]
+  },
+  "custom/expand-icon": {
+    "format": "",
+    "tooltip": false
+  },
+ "backlight": {
+    "format": "{icon}",
+    "format-icons": ["󰖨"],
+    "tooltip-format": "Brightness at {percent}%"
+  },
+  "memory": {
+    "format": " {used:0.1f}",
+    "interval": 2,
+    "on-click": "omarchy-launch-or-focus-tui btop"
+  },
+   "custom/clipboard":{
+  	"format": "󰨸",
+	"tooltip": true,
+	"tooltip-format": "Clipboard History",
+	"on-click": "~/.local/bin/clipboard-history"
+  },
+  "mpris": {
+    "format": "{player_icon} {artist} - {title}",
+    "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+    "ignored-players": [
+      "chromium"
+    ],
+    "max-length": 35,
+    "player-icons": {
+      "default": "🎵",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    }
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 45
+  }
 }

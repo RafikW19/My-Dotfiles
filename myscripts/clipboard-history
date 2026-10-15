@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+selected=$(cliphist list | rofi -dmenu -i -p "Clipboard" \
+    -display-columns 2,3 \
+    -theme ~/.config/rofi/themes/clipboard.rasi)
+
+[ -z "$selected" ] && exit 0
+
+printf '%s\n' "$selected" | cliphist decode | wl-copy

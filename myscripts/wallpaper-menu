@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+DIR="$HOME/Pictures/wallpapers"
+
+mapfile -t WALLPAPERS < <(
+    find "$DIR" -maxdepth 1 -type f \
+        \( -iname '*.jpg' -o -iname '*.jpeg' \
+        -o -iname '*.png' -o -iname '*.webp' \) |
+        sort
+)
+
+((${#WALLPAPERS[@]})) || exit 1
+
+CHOICE=$(
+    for file in "${WALLPAPERS[@]}"; do
+        printf '%s\0icon\x1f%s\n' "$file" "$file"
+    done |
+        rofi -dmenu -i -show-icons \
+            -theme ~/.config/rofi/wallpaper.rasi
+)
+
+if [[ -f "$CHOICE" ]]; then
+    awww img "$CHOICE" --transition-type fade
+
+    mkdir -p "$HOME/.cache"
+    WALLPAPER_DIR="$HOME/Pictures/wallpapers"
+    STATE_FILE="$HOME/.cache/awww-wallpaper-index"
+
+    mapfile -d '' WALLPAPERS < <(
+        find "$WALLPAPER_DIR" -maxdepth 1 -type f \
+            \( -iname '*.jpg' -o -iname '*.jpeg' \
+            -o -iname '*.png' -o -iname '*.webp' \) \
+            -print0 | sort -z
+    )
+
+    for i in "${!WALLPAPERS[@]}"; do
+        if [[ "${WALLPAPERS[$i]}" == "$CHOICE" ]]; then
+            printf '%s\n' "$i" > "$STATE_FILE"
+            break
+        fi
+    done
+fi

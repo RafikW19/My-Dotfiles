@@ -1,0 +1,3 @@
+these scripts should be on this dir:
+
+/home/username/.local/bin/

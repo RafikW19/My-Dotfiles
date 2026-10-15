@@ -10,6 +10,8 @@
 --
 hl.on("hyprland.start", function () 
    hl.exec_cmd("awww-daemon")
---   hl.exec_cmd("kitty")
    hl.exec_cmd("waybar")
+   hl.exec_cmd("wl-paste --type text --watch cliphist store")
+   hl.exec_cmd("wl-paste --type image --watch cliphist store")
+   hl.exec_cmd("kitty --class=neofetch --hold -e neofetch")
 end)

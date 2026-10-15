@@ -1,84 +1,221 @@
 @import "color.css";
 
 * {
-    border: none;
-    font-family: "SF Pro Display","JetBrainsMono Nerd Font Propo";
-    font-size: 14px;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'JetBrainsMono Nerd Font', 'Noto Sans Arabic';
+  font-size: 14px;
+}
+
+#left1 {
+  background-color: @background; 
+  border-radius: 20px;          
+  padding: 2px 5px;
+  margin: 2px 3px;
+  border: 1px solid @border;
+}
+
+.modules-center {
+  background-color: @background; 
+  border-radius: 20px;          
+  padding: 2px 5px;
+  margin: 2px 3px;
+  border: 1px solid @border;
+}
+
+#right2,
+#right3 {
+  background-color: @background; 
+  border-radius: 20px;          
+  padding: 2px 5px;
+  margin: 2px 3px;
+  border: 1px solid @border;
+}
+
+.modules-left {
+  margin-left: 5px;
+}
+
+.modules-right {
+  margin-right: 5px;
+}
+
+#waybar {
+  background: transparent;
 }
 
 window#waybar {
-    background: transparent;
-    color: white;
+  background: transparent;
+  color: transparent;
+  padding: 0;
+  margin: 0px 0px 0px 0px;
+  transition: .5s;
 }
 
-tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
-}
-tooltip label {
-  color: white;
+mpris.empty {
+  background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
-#workspaces{
-    border-radius: 25px;
-    background-color: alpha(black, 0.6);
+#workspaces {
+    background-color: alpha(@border, 0.4);
+    border: none;
+    padding: 2px;
+    margin: 2px 4px;
+    margin-right: 0px;
+    border-radius: 15px;
 }
+
 #workspaces button {
-    transition: all 333ms ease-in-out;
-    padding: 0 5px;
-    margin: 2px;
-    background: alpha(black, 0.6);
-    color: white;
-    border-radius: 50px;
+    transition: all 500ms ease-in-out;
+    padding: 0px 8px;
+    margin: 0px 1px;
+    color: @muted;
+    border-radius: 15px;
+    background-color: transparent;
 }
+
 #workspaces button.active {
-    min-width: 40px;
-    background: rgb(72, 94, 172);
-    color: black;
-    border-radius: 100px;
-    border: 1px solid #434343;
+    padding: 0px 8px;
+    margin: 0px 1px;
+    background: @border;
+    color: @foreground;
+    border-radius: 15px;
+    opacity: 1; 
+}
+
+#workspaces button.empty {
+    opacity: 0.3; 
+}
+
+#workspaces button.empty.active {
+    opacity: 0.75; 
+}
+
+#workspaces button.active:hover,
+#workspaces button:hover {
+    background-color: @muted;
+    color: @background;
+    opacity: 1; 
+    transition: .7s;
+}
+
+#memory,
+#clock,
+#cpu,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio {
+  background-color: @border;
+  color: @foreground;
+  padding: 5px 12px;
+  margin: 2px 2px;
+  border-radius: 15px;
+}
+
+#clock:hover,
+#backlight:hover,
+#cpu:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover {
+  background-color: @muted;
+  color: @background;
+  transition: .7s;
+}
+
+#custom-clipboard {
+    padding: 0 10px;
+    color: @foreground;
+    font-size: 16px;
+    margin: 0 4px;
+}
+
+#custom-clipboard:hover {
+    color: @foreground;
+    background-color: @border;
+    border-radius: 8px;
+}
+
+#memory {
+  padding: 5px 12px;
+  margin: 2px 2px;
 }
 
 
 #clock {
-    min-width: 60px;
-    background-color: alpha(black, 0.6);
-    color: rgb(127, 127, 233);
-    border-radius: 25px;
-    font-weight: 700;
-    margin: 0 3px;
+  border-radius: 15px;
+  padding: 0 15px;
+  margin: 2px 0px;
 }
 
-#memory{
-    background-color:alpha(black, 0.6);
-    color: rgb(127, 127, 233);
-    padding: 0 5px;
-    margin: 0 5px;
-    border-radius: 10px;
+.hidden {
+  opacity: 0;
 }
 
-#pulseaudio{
-    background-color:alpha(black, 0.6);
-    color: rgb(241, 251, 64);
-    padding: 0 5px;
-    margin: 0 5px;
-    border-radius: 10px;
+
+#custom-omarchy,
+#battery {
+  color: @foreground;
+  font-size: x-large;
+  min-width: 10px;
+  border-radius: 15px;
+  padding: 0 8px;
+  margin: 2px 3px 5px 0px;
+}
+
+#battery {
+  margin-left: 2px;
+}
+
+#mpris {
+  background: @background;
+  color: @foreground;
+  border-radius: 20px;          
+  padding: 0px 10px;
+  margin: 2px 3px;
+  border: 1px solid @border;
+}
+
+#window {
+  background: @background;
+  color: @foreground;
+  border-radius: 20px;          
+  padding: 0px 10px;
+  margin: 2px 3px;
+  border: 1px solid @border;
+}
+
+window#waybar.empty #window {
+    background-color: transparent; 
+    border: none;
+    padding: 0px 10px;
 }
 
 #network {
-    background-color:alpha(black, 0.6);
-    color: rgb(131, 62, 187);
-    padding: 0 5px;
-    margin: 0 5px;
-    border-radius: 10px;
+  padding: 0 15px 0 10px;
+}
+
+#pulseaudio {
+  padding: 0 15px 0 10px;
+}
+
+tooltip {
+  border-radius: 15px;
+  background: @background;
+  border: 1px solid @border;
+  color: @foreground;
 }
 
 
-#custom-logo {
-    margin: 0 10px;
-    font-size: x-large;
-    color: skyblue;
+#backlight {
+  font-size: 15px;
+  background-color: @border;
+  color: @foreground;
+  padding: 5px 15px 5px 11px;
+  margin: 2px 2px;
+  border-radius: 15px;
 }

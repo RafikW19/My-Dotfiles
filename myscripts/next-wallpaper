@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR="$HOME/Pictures/wallpapers"
+STATE_FILE="$HOME/.cache/awww-wallpaper-index"
+
+mkdir -p "$(dirname "$STATE_FILE")"
+
+mapfile -d '' WALLPAPERS < <(
+    find "$WALLPAPER_DIR" -maxdepth 1 -type f \
+        \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) \
+        -print0 | sort -z
+)
+
+[ "${#WALLPAPERS[@]}" -eq 0 ] && exit 1
+
+INDEX=0
+[ -f "$STATE_FILE" ] && read -r INDEX < "$STATE_FILE"
+[[ "$INDEX" =~ ^[0-9]+$ ]] || INDEX=0
+
+INDEX=$(( (INDEX + 1) % ${#WALLPAPERS[@]} ))
+
+awww img "${WALLPAPERS[$INDEX]}" --transition-type fade
+
+printf '%s\n' "$INDEX" > "$STATE_FILE"

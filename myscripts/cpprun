@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+
+if [ $# -ne 1 ]
+then
+    echo "this script requires at least one argument !";
+    exit 2;
+fi
+
+if [[ "$1" != *.cpp ]]
+then
+    echo "this file isn't a .cpp file !";
+    exit 2;
+fi
+
+ 
+g++ "$1" -o "${1%.*}"
+
+if [ $? -ne 0 ]
+then
+    
+    echo " "
+    echo "E: error occured while compiling the file !";
+    exit 3;
+fi
+
+./"${1%.*}"

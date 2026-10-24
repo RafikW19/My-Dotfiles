@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+if [ $# -ne 1 ]
+then
+    echo "this script need at least one argument to run !";
+    exit 2
+fi
+
+if [[ "$1" != *.java ]]
+then
+    echo "this is not a .java file !";
+    exit 3;
+fi
+
+javac "$1"
+
+if [ $? -ne 0 ]
+then
+    echo " ";
+    echo "E: error while compiling the file !";
+    exit 1;
+fi
+
+java "${1%.*}"
